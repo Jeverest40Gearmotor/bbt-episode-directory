@@ -3,17 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const [apiData, setObj] = useState('Hello');  
-  /*
-  async function apiFetch(){
-    const res = await fetch('https://us-central1-big-bang-theory-25fd5.cloudfunctions.net/bbt361642/bbt/episodes')
-    App.obj = await res.json();
-    console.log(obj);
-  }
-  */
-
-  
-  fetch('https://us-central1-big-bang-theory-25fd5.cloudfunctions.net/bbt361642/bbt/episodes')
+  const [apiData, setObj] = useState('Hello');
+  var jsonData;
+  const onClick = () => {
+    fetch('https://us-central1-big-bang-theory-25fd5.cloudfunctions.net/bbt361642/bbt/episodes')
     .then(res => res.json())
     .then(data => {
       setObj(data);
@@ -23,10 +16,23 @@ function App() {
      });
     
      console.log({apiData});
+     console.log("Clicked!")
+     jsonData = JSON.stringify(apiData)
+     console.log(jsonData)
+  }
+
+/*
+
+*/
+
   return (
+    <>
     <div className="App">
-      <p>hello</p>
+      <button className="update-button" type="button" onClick={onClick}>Update Data</button>
+      <p>{jsonData}</p>
     </div>
+    
+    </>
   );
 }
 

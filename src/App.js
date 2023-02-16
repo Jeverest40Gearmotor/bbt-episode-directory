@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+import logo from './TBBTLogo.svg';
 import './App.css';
+import Button from 'react-bootstrap/Button';
+//npm install
+//npm install react-boostrap bootstrap
+//npm run start
 
 function App() {
   const [apiData, setObj] = useState('Hello');
@@ -28,10 +32,12 @@ function App() {
   return (
     <>
     <div className="App">
-      <button className="update-button" type="button" onClick={onClick}>Update Data</button>
+      <h1>Big Bang Theory Episode Directory</h1>
+      <img src={logo} alt="Imagine the show's logo here"/>
+      <Button onClick={onClick}>Update Data</Button>
       <p>{jsonData}</p>
     </div>
-    
+
     </>
   );
 }

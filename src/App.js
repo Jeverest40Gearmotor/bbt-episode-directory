@@ -29,12 +29,20 @@ function App() {
   return (
     <>
     <div className="App">
-      <div class="card">
-        <div class="card-body">
-          <h1>Big Bang Theory Episode Directory</h1>
+      
+      <div className="card">
+        <div className="card-body">
+          <div className="card-title">
+            <h1>Big Bang Theory Episode Directory <span class="align-middle"><img src={logo} alt="Imagine the show's logo here"/></span></h1>
+          </div>
         </div>
       </div>
-      <img src={logo} alt="Imagine the show's logo here"/>
+
+      <div className="card">
+
+        
+      </div>
+
       <br></br>
       <Button onClick={onClick}>Update Data</Button>
     </div>

@@ -6,3 +6,7 @@ img {
   width: 1.5em;
   height: auto;
 }
+
+.data {
+  text-align: left;
+}

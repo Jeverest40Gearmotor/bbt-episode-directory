@@ -7,7 +7,9 @@ import Button from 'react-bootstrap/Button';
 //npm run start
 
 function App() {
-  const [apiData, setObj] = useState('Hello');
+  const [apiData, setObj] = useState({});
+  const datap = 0;
+
   const onClick = () => {
     fetch('https://us-central1-big-bang-theory-25fd5.cloudfunctions.net/bbt361642/bbt/episodes')
     .then(res => res.json())
@@ -15,17 +17,13 @@ function App() {
       setObj(data);
      })
     .then(() => {
-      console.log({apiData});
+      console.log(apiData);
      });
     
-     console.log({apiData});
+     console.log(apiData);
      console.log("Clicked!")
   }
-
-/*
-
-*/
-
+//{apiData.data._embedded.episodes[0].name}
   return (
     <>
     <div className="App">
@@ -33,15 +31,12 @@ function App() {
       <div className="card">
         <div className="card-body">
           <div className="card-title">
-            <h1>Big Bang Theory Episode Directory <span class="align-middle"><img src={logo} alt="Imagine the show's logo here"/></span></h1>
+            <h1>Big Bang Theory Episode Directory <img src={logo} alt="Imagine the show's logo here"/></h1>
           </div>
         </div>
       </div>
 
-      <div className="card">
-
-        
-      </div>
+      <p className='data'>{apiData.data._embedded.episodes[0].name}</p>
 
       <br></br>
       <Button onClick={onClick}>Update Data</Button>

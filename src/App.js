@@ -3,7 +3,7 @@ import logo from './TBBTLogo.svg';
 import './App.css';
 import Button from 'react-bootstrap/Button';
 //npm install
-//npm install react-boostrap bootstrap
+//npm install react-bootstrap bootstrap
 //npm run start
 
 function App() {
@@ -22,7 +22,18 @@ function App() {
     
      console.log(apiData);
      console.log("Clicked!")
+     console.log(getEpisode(0))
+     console.log(episodeListParse(getEpisode(0)))
   }
+
+  const getEpisode = (episode) => {
+    return apiData.data._embedded.episodes[episode]
+  }
+
+  const episodeListParse = (episode) => {
+    return 'S'+episode.season+' '+'E'+episode.number+' '+episode.name+' '+episode.airdate
+  }
+
 //{apiData.data._embedded.episodes[0].name}
   return (
     <>
@@ -36,7 +47,7 @@ function App() {
         </div>
       </div>
 
-      <p className='data'>{apiData.data._embedded.episodes[0].name}</p>
+      <p className='data'>bruh</p>
 
       <br></br>
       <Button onClick={onClick}>Update Data</Button>

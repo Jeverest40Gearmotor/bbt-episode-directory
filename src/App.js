@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './TBBTLogo.svg';
 import './App.css';
 import Button from 'react-bootstrap/Button';
@@ -10,20 +10,17 @@ function App() {
   const [apiData, setObj] = useState({});
   const datap = 0;
 
-  const onClick = () => {
+  useEffect(() => {
     fetch('https://us-central1-big-bang-theory-25fd5.cloudfunctions.net/bbt361642/bbt/episodes')
     .then(res => res.json())
-    .then(data => {
-      setObj(data);
-     })
-    .then(() => {
-      console.log(apiData);
-     });
-    
-     console.log(apiData);
-     console.log("Clicked!")
-     console.log(getEpisode(0))
-     console.log(episodeListParse(getEpisode(0)))
+    .then(data => setObj(data))
+  }, [])
+  
+  const onClick = () => {
+    console.log(apiData);
+    console.log("Clicked!")
+    console.log(getEpisode(0))
+    console.log(episodeListParse(getEpisode(0)))
   }
 
   const getEpisode = (episode) => {

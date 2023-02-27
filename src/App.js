@@ -7,20 +7,23 @@ import Button from 'react-bootstrap/Button';
 //npm run start
 
 function App() {
-  const [apiData, setObj] = useState({});
-  const datap = 0;
+  const [apiData, setObj] = useState([]);
 
   useEffect(() => {
     fetch('https://us-central1-big-bang-theory-25fd5.cloudfunctions.net/bbt361642/bbt/episodes')
     .then(res => res.json())
-    .then(data => setObj(data))
+    .then(data => {
+      const episodeList = data.data._embedded.episodes
+      setObj(episodeList)
+    })
   }, [])
   
   const onClick = () => {
     console.log(apiData);
     console.log("Clicked!")
-    console.log(getEpisode(0))
-    console.log(episodeListParse(getEpisode(0)))
+    console.log(apiData[0])
+    //console.log(getEpisode(0))
+    //console.log(episodeListParse(getEpisode(0)))
   }
 
   const getEpisode = (episode) => {
